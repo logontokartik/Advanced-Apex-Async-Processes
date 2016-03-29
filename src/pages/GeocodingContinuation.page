@@ -1,0 +1,27 @@
+<apex:page controller="GeocodingContinuation">
+
+<apex:form >
+	<apex:sectionHeader title="Geocoding Continuation Example" />
+	<apex:pageMessages />
+	
+	<apex:pageBlock title="Address" >
+		<apex:pageBlockSection columns="1">
+			<apex:inputField value="{!acct.BillingStreet}"     label="Street"/>
+			<apex:inputField value="{!acct.BillingCity}"       label="City"/>
+			<apex:inputField value="{!acct.BillingState}"      label="State"/>
+			<apex:inputField value="{!acct.BillingPostalCode}" label="Postal Code" />
+			<apex:inputField value="{!acct.BillingCountry}"    label="Country"/>
+		</apex:pageBlockSection>
+		<apex:pageBlockButtons >
+			<apex:commandButton value="Geocode Address" action="{!geocodeAddress}" rerender="resultBlock"/>
+		</apex:pageBlockButtons>
+	</apex:pageBlock>
+
+	<apex:pageBlock title="Results" id="resultBlock">
+		<pre>
+			<apex:outputText value="{!jsonResult}" escape="false" />
+		</pre>
+	</apex:pageBlock>
+</apex:form>
+
+</apex:page>
